@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gragenciaupload",
+  "private_key_id": "f2f8554f77550fbe34a29dce1fdcbdc7beefca3f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDLNepWyfvvurs0\nmEkiFZ38pq91xIiB25pATwwxH8tZ66rMV695CAPnX3T3szHPs2fRedEFNKdmXCNy\nXPpZ0tOXExl5AtRSfyBp4M15vPVERcKZdxS9qpvDoJ/PXHnlXACMTFwJ19txa53n\nwL74zk3ULudz+1bQSnLk5M6VdLFAU9JtwRBjMSGNWgMB1lM1qTElRZ0RGkCoF5WF\nQOHjqgI2PfGDBs4Un7TfNszHQmoqGfd5S9IaUSYMfHhd3XzFzvQ2xVsBq4/gZDrx\nWx/ANuXpL0wmU4Vd9Kd8SVzNyXr0R+6evi5PZdSms8AxiD8+Wh07grgJU+hYLi2P\nfDN+ZI7hAgMBAAECggEAXXKGOHH7DqN+ujF7lBZ/x/L5Bf2iTqEnfoI7V43I7Clx\nKjX6hfxXGzus5Ml9Uwer6ssLgUrU3j/ptwolwE+wqK0KTjksXWGDjNzpcJ2h5kr0\nMbFuksfViHEhfHCIx532zI3C123xxmcYPr5Gs9DfPn9xRUckBXXu/u5vR5BZgHwY\n4mXxIFdYRsBjaYpba0uiLEAikAQmAGeQJRAb08Y+DhGfabGFf4+1QU4GiSxDvOwo\n76lqQB4Z9jNla9/iwgq3g2K/3SM9BzhiAx/NuJ0hKXw7GYXKgLWlorPqh4/+tLmr\n0fCl/bmDdMsPgGBZJ5kudNDI+Nrjz20TPwxyj6kv/wKBgQD4dItzZ7sUzhpZAXw4\nt2uiRs5Nqs5spiKIrB/kmUv4DZ14nLoR/eOA2Oe1iiPTTJliZDKNpknLc5goYOfg\n+m/Jt2RNQQqN54ScY7L4OFGGZE48y3nLdI5YBg4vCeuQPz1TBXxriY0k7F951hww\nx+9dsGAL+vLvxnnIc1LSagoaewKBgQDRYaUzH2WdytnDi22yOARNRaDAbdZiaVz+\n6Xp6lpDWcBn58IpRR44TcKTKyZa+TZuljw7uMlJQ+YnAqxVhePR9FWEnTfh8YqRt\nqwLFDlNNEo7jgBlwMWwidsqWd570PG0d8tOL69vcn1V3PjCcxzirRHOULV4XCBnA\nwDQv+gkbUwKBgQDHJRNJk1F+4Zx4zxn0lABv9/UQh+IhcCCqD90YbE9aKf+YV3dF\nSI18D1/aQTlp+jHPjaR/qVPpAWRqqRHzYIkN1DNPQNzm1TWT7M3c67dc0zVqwWWE\nUI5vu5rO1VK9MhNDYlhSEdTSTaxRie7aoscX/3Fc6O6khh/DLbyq71fd1QKBgAqC\n1mI8n0NOnaP9aeJagYzHhAxk9zA1jd+WJPnmeRrqwcMUWj0+VFmRfBRaDmE7UCb9\niYhXql46SLoNXKNqCQwGeLwaY/EKmqqOvTLbRz9FQTsWgTBqqr0ILZ9kHeyw4+Fv\nAUOy8XSf4xB7ZMFaFvQyGYNEy8ZoN7K/c189NBvVAoGBAKHTfaYYmrCXigTtoncl\nqsZRKrFi+AngX0WvlEaO912up6r+c0AdbCxHYRUBtqetEaj1/Xk/fTzZfIzSCRUB\nQ2BYw/xmUs/nNT5qKucOxwq0XPbmAIV2+AMjWlfFD4FNAlmXAJXJhUf3hCm2IDVC\nPI4RLvzde8grUo9YQl4o1V46\n-----END PRIVATE KEY-----\n",
+  "client_email": "googledrive@gragenciaupload.iam.gserviceaccount.com",
+  "client_id": "109416950214849170306",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/googledrive%40gragenciaupload.iam.gserviceaccount.com"
+}

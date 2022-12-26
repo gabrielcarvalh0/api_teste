@@ -1,0 +1,85 @@
+---
+text: "Confirmar meu e-mail"
+image: https://res.cloudinary.com/dydwaeqqy/image/upload/v1670525246/logo_pe9bt1.png
+baseUrl: http://localhost:3000/app/
+---
+
+<extends src="src/views/mail/layouts/main.html">
+  <block name="template">
+    <table class="w-full font-sans">
+      <tr>
+        <td align="center" class="bg-gray-900">
+          <table class="w-150 sm:w-full">
+            <tr>
+              <td class="p-12 sm:py-8 sm:px-6 text-center">
+                <a href="https://gragencia.com.br">
+                  <img src="{{page.image}}"  class="max-w-full w-40 align-middle [border:0]">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" class="sm:px-6">
+                <table class="w-full">
+                  <tr>
+                    <td class="p-12 sm:px-6 bg-gray-700 text-gray-400 text-base text-left leading-6 rounded shadow-sm">
+                      <p>
+                        Olá,
+                      </p>
+                      <p class="text-2xl sm:leading-8 text-gray-200 font-semibold m-0 mb-6">
+                        Confirme seu e-mail
+                      </p>
+                      <p class="m-0 mb-6">
+                        Porfavor, clique no botão a baixo para confirmar seu e-mail: {{email}}.
+                      </p>
+                      <div class="leading-full">
+                        <a href="{{page.baseUrl}}/?code={{token}}"
+                          class="bg-green-500 inline-block py-3.5 px-4 rounded text-base font-bold text-center [text-decoration:none] text-gray-900  hover:bg-green-700">
+                          {{page.text}}
+                        </a>
+                      </div>
+                      <table class="w-full" role="separator">
+                        <tr>
+                          <td class="py-8">
+                            <div class="bg-gray-500 h-px leading-px">&zwnj;</div>
+                          </td>
+                        </tr>
+                      </table>
+                      <p class="m-0 mb-4">
+                        Receba notificações e projetos confirmando seu e-mail
+                      </p>
+                      <p class="m-0 mb-4">
+                        Obrigado, <br />Equipe GR Agência.
+                      </p>
+                    </td>
+                  </tr>
+                  <tr role="separator">
+                    <td class="h-12"></td>
+                  </tr>
+                  <tr>
+                    <td class="text-center text-slate-600 text-xs px-6">
+                      <p class="m-0 mb-4 uppercase">
+                        desenvolvido por GR Agência
+                      </p>
+                      <p class="m-0 italic">
+                        Acompanhe nossas redes
+                      </p>
+                      <p class="cursor-default">
+                        <a href="https://www.instagram.com/gr.agenciabr/" target="_blank"
+                          class="text-green-500 [text-decoration:none] hover:[text-decoration:underline]">Instagram</a>
+                        &bull;
+                        <a href="https://www.facebook.com/gr.agenciabr " target="_blank"
+                          class="text-green-500 [text-decoration:none] hover:[text-decoration:underline]">Facebook</a>
+                        &bull;
+
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </block>
+</extends>

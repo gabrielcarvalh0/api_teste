@@ -1,0 +1,25 @@
+/* Tailwind CSS components */
+@import "tailwindcss/components";
+
+/**
+ * @import here any custom CSS components - that is, CSS that
+ * you'd want loaded before the Tailwind utilities, so the
+ * utilities can still override them.
+*/
+
+/* Tailwind CSS utility classes */
+@import "tailwindcss/utilities";
+
+/* Your custom utility classes */
+@import "utilities";
+
+:root {
+  color-scheme: light dark;
+}
+
+
+body {
+  @apply bg-gray-900 text-zinc-100
+}
+
+
