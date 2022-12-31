@@ -19,7 +19,6 @@ export class ProjectController {
         category: true,
       },
     });
-    console.log(response);
     return res.json(response);
   }
   async listAllProjectsForUser(req: Request, res: Response) {

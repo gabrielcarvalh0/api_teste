@@ -141,22 +141,22 @@ routes.delete(
 
 // Projects -> Status
 routes.get(
-  "/project/category_projects",
+  "/project/category_project",
   admMiddleware,
   new CategoryController().getAllCategorys
 );
 routes.post(
-  "/project/category_projects",
+  "/project/category_project",
   admMiddleware,
   new CategoryController().createCategory
 );
 routes.put(
-  "/project/category_projects",
+  "/project/category_project",
   admMiddleware,
   new CategoryController().updateCategory
 );
 routes.delete(
-  "/project/category_projects",
+  "/project/category_project",
   admMiddleware,
   new CategoryController().deleteCategory
 );
