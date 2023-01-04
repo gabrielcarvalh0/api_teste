@@ -3,6 +3,7 @@ import { userRepository } from "../repositories/userRepository";
 import bcrypt from "bcrypt";
 import { sign } from "jsonwebtoken";
 import crypto from "crypto";
+import { Equal } from "typeorm";
 const mailer = require("../services/mailer");
 
 export class UserController {
@@ -114,9 +115,13 @@ export class UserController {
   // pega todos os usuarios cadastrados
   async getAllUsers(req: Request, res: Response) {
     const response = await userRepository.find({
+
       relations: {
         profile: true,
-        projects: true,
+        projects: {
+          status: true,
+
+        },
       },
     });
     return res.json(response);

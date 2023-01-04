@@ -81,6 +81,8 @@ routes.get(
 
 // Projects
 routes.get("/project", admMiddleware, new ProjectController().getAllProjects);
+routes.get("/projects_conluded", admMiddleware, new ProjectController().getAllProjectsConcluded);
+
 routes.post(
   "/project",
   admMiddleware,

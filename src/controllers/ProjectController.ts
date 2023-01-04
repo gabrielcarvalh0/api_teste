@@ -21,6 +21,21 @@ export class ProjectController {
     });
     return res.json(response);
   }
+  async getAllProjectsConcluded(req: Request, res: Response) {
+    const response = await projectRepository.find({
+      where: {
+        status: Equal("2"),
+      },
+      relations: {
+        status: true,
+        category: true,
+        type: true,
+        user: true,
+      },
+    });
+    return res.json(response);
+  }
+
   async listAllProjectsForUser(req: Request, res: Response) {
     const { id } = req.user;
     try {
@@ -82,54 +97,55 @@ export class ProjectController {
       projectModel,
       description,
       status,
-      createdAt,
-      user,
+      id,
       projectValueInNumeric,
       projectPayment,
       projectTime,
       projectLink,
     } = req.body;
 
-    const { id } = user;
     // const {name, email } = user;
 
-    const userExists = await userRepository.findOneBy({ id });
+    try {
+      const userExists = await userRepository.findOneBy({ id });
 
-    if (!userExists) {
-      return res.status(400).json({ message: "Esse usuário não existe" });
+      if (!userExists) {
+        return res.status(400).json({ message: "Esse usuário não existe" });
+      }
+
+      const newProject = await projectRepository.create({
+        name,
+        description,
+        type,
+        status,
+        projectColors,
+        category,
+        currentFile,
+        projectModel,
+        projectValueInNumeric,
+        projectPayment,
+        projectTime,
+        projectLink,
+        user: {
+          id,
+        },
+      });
+
+      await projectRepository.find({
+        relations: {
+          user: true,
+          category: true,
+          type: true,
+          status: true,
+        },
+      });
+
+      await projectRepository.save(newProject);
+
+      return res.status(201).json({ newProject });
+    } catch (error) {
+      res.status(400).json({ error });
     }
-
-    const newProject = await projectRepository.create({
-      name,
-      description,
-      type,
-      status,
-      projectColors,
-      category,
-      currentFile,
-      projectModel,
-      createdAt,
-      projectValueInNumeric,
-      projectPayment,
-      projectTime,
-      projectLink,
-      user: {
-        id,
-      },
-    });
-
-    await projectRepository.find({
-      relations: {
-        user: true,
-        category: true,
-        type: true,
-        status: true,
-      },
-    });
-
-    await projectRepository.save(newProject);
-
-    return res.status(201).json({ newProject });
   }
 
   async projectStatusDeleted(req: Request, res: Response) {
@@ -222,7 +238,7 @@ export class ProjectController {
     // enviar e-mail
 
     try {
-      const { id, status,  name: projectName} = req.body;
+      const { id, status, name: projectName } = req.body;
       const { name: userName } = req.user;
       const updateProjectAnalysis = await projectRepository.update(id, {
         status,
@@ -234,7 +250,7 @@ export class ProjectController {
           template: "send_project",
           subject: `Projeto ${projectName} enviado`,
           context: {
-            userName
+            userName,
           },
         },
         (err: any) => {
@@ -246,7 +262,7 @@ export class ProjectController {
           return res.send();
         }
       );
-    return res.status(201).json({ messgae: "Tipo alterado com sucesso!" });
+      return res.status(201).json({ messgae: "Tipo alterado com sucesso!" });
     } catch (error) {
       console.log(error);
     }
