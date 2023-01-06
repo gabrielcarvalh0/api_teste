@@ -47,6 +47,7 @@
       "migration:run": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:run",
       "typeorm": "typeorm-ts-node-commonjs",
       "maizzle": "maizzle build production",
-      "maizzle-serve": "maizzle serve"
+      "maizzle-serve": "maizzle serve",
+      "build": "node src/index.ts"
    }
 }
