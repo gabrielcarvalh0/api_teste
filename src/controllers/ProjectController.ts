@@ -106,7 +106,7 @@ export class ProjectController {
       projectTime,
       projectLink,
     } = req.body;
-
+console.log(req.body)
     const { id: typeId, name: typeName } = type;
     try {
       const userExists = await userRepository.findOneBy({ id });
@@ -237,26 +237,48 @@ export class ProjectController {
           user: true,
         },
       });
+if(status === 2){
+  mailer.sendMail(
+    {
+      to: email,
+      from: process.env.MAIL_FROM_DEFAULT,
+      template: "update_project",
+      subject: `Projeto concluído: ${name} - confira agora - GR Agência`,
+      context: {
+        name,
+      },
+    },
+    (err: any) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).send({ err });
+      }
 
-      mailer.sendMail(
-        {
-          to: email,
-          from: process.env.MAIL_FROM_DEFAULT,
-          template: "update_project",
-          subject: `Nova alteração no projeto: ${name} - confira agora - GR Agência`,
-          context: {
-            name,
-          },
-        },
-        (err: any) => {
-          if (err) {
-            console.log(err);
-            return res.status(400).send({ err });
-          }
+      return res.send();
+    }
+  );
+}else{
+  mailer.sendMail(
+    {
+      to: email,
+      from: process.env.MAIL_FROM_DEFAULT,
+      template: "update_project",
+      subject: `Nova alteração no projeto: ${name} - confira agora - GR Agência`,
+      context: {
+        name,
+      },
+    },
+    (err: any) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).send({ err });
+      }
 
-          return res.send();
-        }
-      );
+      return res.send();
+    }
+  );
+}
+
       return res.status(201).json({ updateProject });
     } catch (error) {
       res.status(400).json({ error });
@@ -286,19 +308,19 @@ export class ProjectController {
   }
 
   async sendProject(req: Request, res: Response) {
-    // mudar o status
-    // enviar e-mail
+
+    const { id, status, name: projectName } = req.body;
+    const { name: userName } = req.user;
 
     try {
-      const { id, status, name: projectName } = req.body;
-      const { name: userName } = req.user;
       const updateProjectAnalysis = await projectRepository.update(id, {
         status,
       });
+
       mailer.sendMail(
         {
-          to: "gragencia.ofc@gmail.com",
-          from: "gragencia.ofc@gmail.com",
+          to: process.env.MAIL_FROM_DEFAULT,
+          from: process.env.MAIL_FROM_DEFAULT,
           template: "send_project",
           subject: `Projeto ${projectName} enviado`,
           context: {
