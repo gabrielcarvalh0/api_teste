@@ -1,3 +1,4 @@
+require('dotenv/config')
 import express from "express";
 import { AppDataSource } from "./data-source";
 import { User } from "./entities/User";
@@ -23,6 +24,6 @@ AppDataSource.initialize()
     app.use(routes);
 
     app.use(express.static('tmp/uploads/'));
-    return app.listen(5000);
+    return app.listen(process.env.PORT || 3333);
   })
   .catch((error) => console.log(error));

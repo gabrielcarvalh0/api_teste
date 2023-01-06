@@ -26,38 +26,38 @@ export class ProfileController {
     const { profile } = req.user;
   }
 
-  async updateForDrive(req: Request, res: Response) {
-    if (req.user.profile) {
-      const { id } = req.user.profile;
-      const {
-        originalname: name,
-        mimetype,
-        size,
-        key,
-        path,
-      } = (req as MulterRequest).file;
+  // async updateForDrive(req: Request, res: Response) {
+  //   if (req.user.profile) {
+  //     const { id } = req.user.profile;
+  //     const {
+  //       originalname: name,
+  //       mimetype,
+  //       size,
+  //       key,
+  //       path,
+  //     } = (req as MulterRequest).file;
 
-      try {
-        uploadFile(name, mimetype, size, key, path, req.file).then((data) => {
-          if (data) {
-            const newProfile = profileRepository.update(id, {
-              photo: `https://drive.google.com/file/d/${data}.${mimetype}`,
-            });
+  //     try {
+  //       uploadFile(name, mimetype, size, key, path, req.file).then((data) => {
+  //         if (data) {
+  //           const newProfile = profileRepository.update(id, {
+  //             photo: `https://drive.google.com/file/d/${data}.${mimetype}`,
+  //           });
 
-            return res
-              .status(201)
-              .json({
-                messgae: "Perfil alterado com sucesso!",
-                newProfile,
-                key,
-              });
-          }
-        });
-      } catch (error) {
-        console.log(error);
-      }
-    }
-  }
+  //           return res
+  //             .status(201)
+  //             .json({
+  //               messgae: "Perfil alterado com sucesso!",
+  //               newProfile,
+  //               key,
+  //             });
+  //         }
+  //       });
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
+  // }
   async updateUserProfile(req: Request, res: Response) {
     console.log(req)
     // if (req.user.profile) {
