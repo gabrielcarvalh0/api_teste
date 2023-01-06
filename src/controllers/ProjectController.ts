@@ -108,7 +108,6 @@ export class ProjectController {
     } = req.body;
 
     const { id: typeId, name: typeName } = type;
-    console.log(req.body);
     try {
       const userExists = await userRepository.findOneBy({ id });
 
@@ -150,7 +149,7 @@ export class ProjectController {
           to: userExists.email,
           from: process.env.MAIL_FROM_DEFAULT,
           template: "new_project",
-          subject: `Novo projeto: ${name} confira agora - GR Agência`,
+          subject: `Novo projeto: ${name} - confira agora - GR Agência`,
           context: {
             name,
             typeName,
@@ -207,6 +206,7 @@ export class ProjectController {
       projectPayment,
       projectTime,
       projectLink,
+      email,
     } = req.body;
 
     try {
@@ -232,6 +232,31 @@ export class ProjectController {
         projectLink,
       });
 
+      await projectRepository.find({
+        relations: {
+          user: true,
+        },
+      });
+
+      mailer.sendMail(
+        {
+          to: email,
+          from: process.env.MAIL_FROM_DEFAULT,
+          template: "update_project",
+          subject: `Nova alteração no projeto: ${name} - confira agora - GR Agência`,
+          context: {
+            name,
+          },
+        },
+        (err: any) => {
+          if (err) {
+            console.log(err);
+            return res.status(400).send({ err });
+          }
+
+          return res.send();
+        }
+      );
       return res.status(201).json({ updateProject });
     } catch (error) {
       res.status(400).json({ error });
@@ -250,6 +275,7 @@ export class ProjectController {
           status: true,
           type: true,
           category: true,
+          user: true,
         },
       });
 
