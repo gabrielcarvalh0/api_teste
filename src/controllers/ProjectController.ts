@@ -12,6 +12,9 @@ interface MulterRequest extends Request {
 export class ProjectController {
   async getAllProjects(req: Request, res: Response) {
     const response = await projectRepository.find({
+      where: {
+        status: Not("2"),
+      },
       relations: {
         user: true,
         status: true,
@@ -104,8 +107,8 @@ export class ProjectController {
       projectLink,
     } = req.body;
 
-    // const {name, email } = user;
-
+    const { id: typeId, name: typeName } = type;
+    console.log(req.body);
     try {
       const userExists = await userRepository.findOneBy({ id });
 
@@ -116,7 +119,7 @@ export class ProjectController {
       const newProject = await projectRepository.create({
         name,
         description,
-        type,
+        type: typeId,
         status,
         projectColors,
         category,
@@ -142,6 +145,29 @@ export class ProjectController {
 
       await projectRepository.save(newProject);
 
+      mailer.sendMail(
+        {
+          to: userExists.email,
+          from: process.env.MAIL_FROM_DEFAULT,
+          template: "new_project",
+          subject: `Novo projeto: ${name} confira agora - GR Agência`,
+          context: {
+            name,
+            typeName,
+            description,
+            currentFile,
+            baseUrl: process.env.BASE_URL,
+          },
+        },
+        (err: any) => {
+          if (err) {
+            console.log(err);
+            return res.status(400).send({ err });
+          }
+
+          return res.send();
+        }
+      );
       return res.status(201).json({ newProject });
     } catch (error) {
       res.status(400).json({ error });

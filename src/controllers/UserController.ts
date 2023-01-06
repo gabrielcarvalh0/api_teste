@@ -144,7 +144,6 @@ export class UserController {
           .json({ message: "Esse e-mail já existe na plataforma" });
         }
         if (userUpdate) {
-          console.log('->', email, userUpdate.email, userExists);
           if(email == userExists ){
             console.log('esse e-mail é o mesmo do user')
           }
@@ -257,7 +256,7 @@ export class UserController {
       mailer.sendMail(
         {
           to: email,
-          from: "gazalves01@gmail.com",
+          from: process.env.MAIL_FROM_DEFAULT,
           template: "auth/confirm_email",
           subject: "Confirme seu e-mail - GR Agência",
           context: {
@@ -274,7 +273,6 @@ export class UserController {
           res.status(201).send({ message: "E-mail enviado com sucesso!" });
         }
       );
-      console.log(token, now);
     } catch (error) {
       res.status(400).send({ message: "Erro em confirmar e-mail." });
     }
@@ -302,7 +300,7 @@ export class UserController {
       mailer.sendMail(
         {
           to: email,
-          from: "gazalves01@gmail.com",
+          from: process.env.MAIL_FROM_DEFAULT,
           template: "auth/forgot_password",
           subject: "Atualize sua senha - GR Agência",
           context: {
@@ -319,7 +317,6 @@ export class UserController {
           return res.send();
         }
       );
-      console.log(token, now);
     } catch (error) {
       res.status(400).send({ message: "Erro em redefinir sua senha." });
     }
@@ -330,12 +327,10 @@ export class UserController {
 
     try {
       const user = await userRepository.findOneBy({ email });
-      console.log(user);
       if (!user)
         return res.status(400).json({ message: "Esse usuário não existe" });
 
       if (token !== user.passwordResetToken) {
-        console.log(token, user.passwordResetToken);
         return res.status(400).json({ message: "Token inválido" });
       }
       const now = new Date();
@@ -359,7 +354,6 @@ export class UserController {
 
   async emailVerificad(req: Request, res: Response) {
     const { emailVerificad } = req.body;
-    console.log(emailVerificad);
     try {
       const userLogged = await userRepository.findOneBy({
         id: req.user.id,

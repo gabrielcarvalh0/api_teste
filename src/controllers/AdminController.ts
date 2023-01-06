@@ -25,7 +25,6 @@ export class AdminController {
       if (adminExists) {
         return res.status(400).json({ message: "Esse adm já existe" });
       }
-      console.log(userId, email);
 
       await adminRepository.find({
         relations: {

@@ -1,7 +1,8 @@
 ---
 text: "Confirmar na plataforma"
 image: https://res.cloudinary.com/dydwaeqqy/image/upload/v1670525246/logo_pe9bt1.png
-baseUrl: http://localhost:3000/app/
+baseUrl: http://localhost:3000/app
+token: token
 ---
 
 <extends src="src/views/mail/layouts/main.html">
@@ -29,10 +30,11 @@ baseUrl: http://localhost:3000/app/
                        Você recebeu um novo projeto
                       </p>
                       <p class="m-0 mb-6">
-                       Você recebeu um novo projeto do usuário: {{userName}}, confira na plataforma
+                       Você recebeu um novo projeto do usuário: @{{userName}}, confira na plataforma
                       </p>
+
                       <div class="leading-full">
-                        <a href="{{page.baseUrl}}/?code={{token}}"
+                        <a href="{{page.baseUrl}}/?code=@{{token}}"
                           class="bg-green-500 inline-block py-3.5 px-4 rounded text-base font-bold text-center [text-decoration:none] text-gray-900  hover:bg-green-700">
                           {{page.text}}
                         </a>

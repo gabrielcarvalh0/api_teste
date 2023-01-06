@@ -9,8 +9,12 @@
 |
 */
 
-
+const url = {
+  local: 'http://localhost:3000',
+  prod: 'https://gragencia.com.br'
+}
 module.exports = {
+  baseUrl: url.local,
   build: {
     templates: {
       source: 'src/views/mail/templates',
@@ -27,8 +31,8 @@ module.exports = {
         compiled: ''
       },
       baseURL: {
-        url: 'https://cdn.example.com/',
-        tags: ['img'],
+        url: 'testeee',
+        tags: ['img', 'a'],
         inlineCss: false,
       },
     },

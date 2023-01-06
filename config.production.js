@@ -10,11 +10,14 @@
 */
 
 module.exports = {
+  doctype: 'html',
+
   build: {
     templates: {
       destination: {
         path: './src/build_production',
       },
+
     },
   },
   inlineCSS: true,

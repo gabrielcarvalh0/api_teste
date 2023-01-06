@@ -1,0 +1,101 @@
+---
+text: "Confirmar na plataforma"
+image: https://res.cloudinary.com/dydwaeqqy/image/upload/v1670525246/logo_pe9bt1.png
+
+---
+
+<extends src="src/views/mail/layouts/main.html">
+  <block name="template">
+    <table class="w-full font-sans h-screen bg-gray-900">
+      <tr>
+        <td align="center">
+          <table class="w-150 sm:w-full">
+            <tr>
+              <td align="center" class="p-12 sm:py-8 sm:px-6 text-center">
+                <a href="https://gragencia.com.br">
+                  <img src="{{page.image}}" class="max-w-full w-40 align-middle [border:0]">
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td align="center" class="sm:px-6">
+                <table class="w-full  bg-gray-700 text-gray-400 text-base text-left leading-6 rounded shadow-sm">
+                  <tr class="p-12  sm:px-6">
+                    <td class="px-6 pt-8">
+
+                      <p class="text-2xl sm:leading-8 text-gray-200 font-semibold m-0 mb-6">
+                        Novo projeto para você
+                      </p>
+                      <p class="m-0 mb-6">
+                        Você recebeu um novo projeto, confira todas os detalhes dentro da plataforma
+                      </p>
+                    </td>
+                  <tr>
+                    <td align="center" class="m-0 mx-auto">
+                      <img class="rounded-t max-w-4xl" src="@{{currentFile}}" alt="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="p-6">
+                      <h2 class="mt-2 mb-3 text-2xl leading-full text-gray-200">
+                        @{{name}}
+                        <span class="ml-2 text-xs bg-green-500 px-6 py-2 text-gray-900 font-bold rounded-md">@{{typeName}}</span>
+
+                      </h2>
+                      <p class="m-0 mb-16 text-base text-gray-400">
+                        @{{description}}
+                      </p>
+                      <a href="{{page.baseUrl}}/app"
+                        class="text-green-500 [text-decoration:none] hover:[text-decoration:underline]">
+                        Ver projeto &rarr;
+                      </a>
+                      <table class="w-full" role="separator">
+                        <tr>
+                          <td class="py-8">
+                            <div class="bg-gray-500 h-px leading-px">&zwnj;</div>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p class="m-0 mb-4 ">
+                        Obrigado, <br />Equipe GR Agência.
+                      </p>
+                    </td>
+                    <td class="flex flex-col justify-center ">
+
+
+                    </td>
+                  </tr>
+
+            </tr>
+            <tr role="separator">
+              <td class="h-12"></td>
+            </tr>
+            <tr>
+              <td class="text-center text-slate-600 text-xs px-6">
+                <p class="m-0 mb-4 uppercase">
+                  desenvolvido por GR Agência
+                </p>
+                <p class="m-0 italic">
+                  Acompanhe nossas redes
+                </p>
+                <p class="cursor-default">
+                  <a href="https://www.instagram.com/gr.agenciabr/" target="_blank"
+                    class="text-green-500 [text-decoration:none] hover:[text-decoration:underline]">Instagram</a>
+                  &bull;
+                  <a href="https://www.facebook.com/gr.agenciabr " target="_blank"
+                    class="text-green-500 [text-decoration:none] hover:[text-decoration:underline]">Facebook</a>
+                  &bull;
+
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </td>
+    </tr>
+    </table>
+  </block>
+</extends>

@@ -1,13 +1,8 @@
-import { Request, Response } from "express";
 import path, { resolve } from "path";
-import fs from "fs";
-import Handlebars from "handlebars";
+
 const hbs = require('nodemailer-express-handlebars');
-
 const nodemailer = require("nodemailer");
-
 const {host, user, pass} = require('../config/mail.json');
-
 
 const transporter = nodemailer.createTransport({
         service: host,
