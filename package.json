@@ -48,6 +48,6 @@
       "typeorm": "typeorm-ts-node-commonjs",
       "maizzle": "maizzle build production",
       "maizzle-serve": "maizzle serve",
-      "build": "node src/index.ts"
+      "build": "node --exec ts-node src/index.ts"
    }
 }
