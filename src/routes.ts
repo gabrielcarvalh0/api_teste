@@ -6,6 +6,7 @@ import { StatusController } from "./controllers/StatusController";
 import { TypeController } from "./controllers/TypeController";
 import { UserController } from "./controllers/UserController";
 import { authMIddleware } from "./middlewares/authMIddleware";
+import multer from "multer";
 import { AdminController } from "./controllers/AdminController";
 import { admMiddleware } from "./middlewares/admMiddleware";
 
