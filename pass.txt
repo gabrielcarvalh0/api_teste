@@ -1,2 +1,2 @@
-senha do 1 57WUqQxnGgHQAYJoQYZzR9B3S5QSGR5107
+senha da variavel postgres_password =  57WUqQxnGgHQAYJoQYZzR9B3S5QSGR5107
 senha do user database: 57WUqQxnGgHQAYJoQYZzR9B3S5QS
