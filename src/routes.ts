@@ -79,6 +79,11 @@ routes.get(
 /////////////////////////////************************************************* */
 // ADM
 
+routes.get(
+  "/projects/projects_for_id/:id",
+  admMiddleware,
+  new ProjectController().selectProjectOfId
+);
 // Projects
 routes.get("/project", admMiddleware, new ProjectController().getAllProjects);
 routes.get("/projects_conluded", admMiddleware, new ProjectController().getAllProjectsConcluded);

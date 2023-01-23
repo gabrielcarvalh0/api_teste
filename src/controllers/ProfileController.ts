@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import { profileRepository } from "../repositories/profileRepository";
-import { userRepository } from "../repositories/userRepository";
-import { uploadFile } from "../services/drive";
 
 interface MulterRequest extends Request {
   file: any;

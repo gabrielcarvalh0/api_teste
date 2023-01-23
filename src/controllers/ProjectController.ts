@@ -5,9 +5,7 @@ import { Equal, Not } from "typeorm";
 
 const mailer = require("../services/mailer");
 
-interface MulterRequest extends Request {
-  file: any;
-}
+
 
 export class ProjectController {
   async getAllProjects(req: Request, res: Response) {

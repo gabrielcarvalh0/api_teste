@@ -23,24 +23,22 @@ export const authMIddleware = async (
 
     const { id } = jwt.verify(
       token,
-      process.env.JWT_PASS ?? process.env.JWT_PASS_ADM ?? "G@zao5107"
-    ) as JwtPayload;
+      process.env.JWT_PASS  ?? "G@zao5107"
+      ) as JwtPayload;
 
     // verificando se existe usuario retornado do jwt no banco de dados
     const user = await userRepository.findOneBy({ id });
-    const adm = await adminRepository.findOneBy({ id });
+    // const adm = await adminRepository.findOneBy({ id });
 
-    if (adm) {
-      const { password: _, ...loggedUser } = adm.user;
-      req.user = loggedUser;
-    } else {
+
       if (!user) {
+        console.log('nao temmmmmm')
         return res.status(401).json({ message: "Usuário não identificado" });
       }
 
       const { password: _, ...loggedUser } = user;
       req.user = loggedUser;
-    }
+
 
     next();
   } catch (error) {
