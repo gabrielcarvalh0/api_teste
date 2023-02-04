@@ -50,8 +50,5 @@
     "maizzle-serve": "maizzle serve",
     "build": "tsc",
     "production": "node ./build/index.js"
-  },
-  "engines": {
-    "node": "16.x"
   }
 }
